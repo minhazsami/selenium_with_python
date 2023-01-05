@@ -14,6 +14,9 @@ driver.implicitly_wait(2)
 # Global Variable
 PromoCode = "rahulshettyacademy"
 
+expectecList = ['Cucumber - 1 Kg', 'Raspberry - 1/4 Kg', 'Strawberry - 1/4 Kg']
+actualList = []
+
 driver.get("https://rahulshettyacademy.com/seleniumPractise/#/")
 driver.maximize_window()
 driver.find_element(By.CSS_SELECTOR, ".search-keyword").send_keys("ber")
@@ -22,7 +25,10 @@ results = driver.find_elements(By.XPATH, "//div[@class='products']/div")
 count = len(results)
 assert count > 0
 for result in results:
+    actualList.append(result.find_element(By.XPATH, "h4").text)
     result.find_element(By.XPATH, "div/button").click()
+
+assert expectecList == actualList
 
 driver.find_element(By.CSS_SELECTOR, "img[alt='Cart']").click()
 driver.find_element(By.XPATH, "//button[text()='PROCEED TO CHECKOUT']").click()
