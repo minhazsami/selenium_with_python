@@ -19,4 +19,12 @@ assert name in alertText
 alert.accept()
 
 
+driver.find_element(By.ID, "name").send_keys(name)
+driver.find_element(By.ID, "confirmbtn").click()
+alert = driver.switch_to.alert
+alertText = alert.text
+print(alertText)
+assert name in alertText
+alert.dismiss()
+
 time.sleep(10)
