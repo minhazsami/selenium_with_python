@@ -8,15 +8,14 @@ from selenium.webdriver.support.select import Select
 
 # -- Chrome Browser \
 chrome_options = webdriver.ChromeOptions()
-chrome_options.add_argument("headless")
+# chrome_options.add_argument("headless")
 chrome_options.add_argument("--ignore-certificate-errors")
 
 service_obj = Service("E:\chromedriver_win32/chromedriver.exe")
 driver = webdriver.Chrome(service=service_obj, options=chrome_options)
 
-driver.implicitly_wait(5)
+driver.get("https://192.168.141.124:30563/#/dashboard")
 
-driver.get("https://rahulshettyacademy.com/AutomationPractice/")
-driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
-driver.get_screenshot_as_file("screen.png")
+print(driver.title)
+
 time.sleep(5)
